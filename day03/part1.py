@@ -1,8 +1,2 @@
-with open('input.txt') as f:
-  lines = f.read().split('\n')
-sum=0
-for line in lines:
-    common = ''.join(set(line[:int(len(line)/2)]).intersection(line[int(len(line)/2):]))
-    if common.isupper(): sum+=ord(common)-65+27
-    else: sum+=ord(common)-96
-print(sum)
+def val(c): return ord(c)-38 if c.isupper() else ord(c)-96
+with open('input.txt') as f: print(sum(map(lambda l: val(''.join(set(l[:int(len(l)/2)]).intersection(l[int(len(l)/2):]))), f.read().split('\n'))))
